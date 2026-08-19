@@ -15,12 +15,16 @@ Lettuce drops · PayID only · same-night rider
 **Account name:** OzPosty  
 **Rider ETA:** 35 minutes after confirm
 
+## Live app
+
+1. Upload `index.html` (the full storefront file) to this repo root via **Add file → Upload files** on GitHub.
+2. Then enable **Settings → Pages → Deploy from a branch → main / (root)**.
+3. Site will be at: `https://aussiebloke98.github.io/ozposty/`
+
 ## Run locally
 
-Download `index.html` and open it in a browser, or:
+Open `index.html` in a browser, or:
 
 ```bash
 python3 -m http.server 8080
 ```
-
-Then open http://localhost:8080
