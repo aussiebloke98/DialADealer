@@ -361,6 +361,12 @@
       outline: 1px solid color-mix(in oklab, var(--fg) 10%, transparent);
       outline-offset: -1px;
       width: 100%;
+      height: auto;
+      display: block;
+      background: #0a0a12;
+    }
+    video.product-shot {
+      pointer-events: none;
     }
 
     /* product option cards */
@@ -777,7 +783,10 @@
           </div>
         </div>
         <div class="rgb-frame" style="padding:4px">
-          <div id="product-art" class="product-shot" role="img" aria-label="Vacuum-sealed lettuce pouch under RGB light"></div>
+          <video id="product-art" class="product-shot" autoplay muted loop playsinline preload="metadata" poster="product-poster.jpg" aria-label="Tonight's drop">
+            <source src="product.mp4" type="video/mp4" />
+            <img src="product-web.gif" alt="Tonight's drop" />
+          </video>
         </div>
       </section>
 
@@ -850,7 +859,10 @@
         </form>
         <aside class="panel side-panel">
           <p class="kicker">Bag</p>
-          <div id="order-art" class="product-shot" style="aspect-ratio:1;margin-top:1rem;border-radius:0.9rem"></div>
+          <video id="order-art" class="product-shot" autoplay muted loop playsinline preload="metadata" poster="product-poster.jpg" aria-label="Selected drop" style="aspect-ratio:1;margin-top:1rem;border-radius:0.9rem;object-fit:cover">
+            <source src="product.mp4" type="video/mp4" />
+            <img src="product-web.gif" alt="Selected drop" />
+          </video>
           <h2 id="order-sku-name">7 grams Lettuce</h2>
           <p class="meta" id="order-sku-code">OZ-7G · one pouch</p>
           <p class="price rgb-price" id="order-sku-price">$120.00</p>
@@ -1352,7 +1364,7 @@
         btn.addEventListener("click", () => {
           selectedSku = PRODUCTS.find((x) => x.id === btn.getAttribute("data-sku"));
           renderSkuGrid();
-          drawPouch(document.getElementById("product-art"), selectedSku.label);
+          /* product gif is static on home */
         });
       });
     }
@@ -1361,7 +1373,7 @@
       document.getElementById("order-sku-name").textContent = selectedSku.weight + " Lettuce";
       document.getElementById("order-sku-code").textContent = selectedSku.code + " · one drop";
       document.getElementById("order-sku-price").textContent = formatAud(selectedSku.price_cents);
-      drawPouch(document.getElementById("order-art"), selectedSku.label);
+      /* order panel uses product gif */
     }
 
     function syncPayPanel(order) {
@@ -1613,7 +1625,6 @@
 
     // boot
     renderSkuGrid();
-    drawPouch(document.getElementById("product-art"), selectedSku.label);
     startTeaser();
   </script>
 </body>
